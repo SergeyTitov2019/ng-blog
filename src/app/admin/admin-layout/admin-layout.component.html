@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+  <div class="container-fluid custom">
+    <a class="navbar-brand" href="/">Admin Page</a>
+    <div class="collapse navbar-collapse">
+      <div class="navbar-nav">
+<!--        <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link" [routerLink]="['/']">Home</a>-->
+        <a routerLinkActive="active" class="nav-link" [routerLink]="['/admin', 'dashboard']">Main</a>
+        <a routerLinkActive="active" class="nav-link" [routerLink]="['/admin', 'create']">Create</a>
+        <a routerLinkActive="active" class="nav-link" [routerLink]="['/']" (click)="logout($event)">Log Out</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+
+
+

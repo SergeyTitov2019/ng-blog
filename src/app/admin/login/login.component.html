@@ -1,0 +1,33 @@
+<div class="container">
+  <form class="card" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h3>Enter admin panel</h3>
+    <div class="input-wrapper">
+      <label for="email">Email</label>
+      <input id='email'
+             type="email"
+             class="form-control"
+             placeholder="Enter your email"
+             formControlName="email">
+      <div *ngIf="form.get('email')?.touched && form.get('email')?.invalid" class="validation">
+        <small>Type correct email</small>
+      </div>
+    </div>
+    <div class="input-wrapper">
+      <label for="password">Password</label>
+      <input id='password'
+             type="password"
+             class="form-control"
+             placeholder="Enter your password"
+             formControlName="password">
+
+      <div *ngIf="form.get('password')?.touched && form.get('password')?.invalid" class="validation">
+        <small>Required password length must be no more than <strong> {{ form.get('password')?.errors!['minlength'].requiredLength }}</strong></small>
+      </div>
+    </div>
+    <button type="submit"
+            class="btn btn-outline-success"
+            [disabled]="form.invalid"
+    >Enter</button>
+  </form>
+</div>
+

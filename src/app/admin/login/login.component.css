@@ -1,0 +1,21 @@
+.card{
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.input-wrapper{
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+button{
+  width: 120px;
+  margin-top: 1rem;
+}
+
+.validation{
+  color: red;
+  font-weight: 600;
+  font-size: 14px;
+  position: absolute;
+}
