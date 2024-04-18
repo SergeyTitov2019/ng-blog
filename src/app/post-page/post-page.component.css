@@ -1,0 +1,17 @@
+.card-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+button{
+  width: 150px;
+  height: 45px;
+}
+
+.info{
+  margin: 1rem 0;
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
