@@ -39,7 +39,7 @@ export class AuthService {
 
   private handleError(error: HttpErrorResponse){
     const { message } = error.error.error
-    console.log('message:',message);
+    console.log('ERR message:',message);
     switch (message){
       case 'INVALID_LOGIN_CREDENTIALS':
         this.error$.next('Wrong login or email')

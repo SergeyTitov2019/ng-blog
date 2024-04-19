@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validator, Validators } from "@angular/forms";
 import { User } from "../../shared/interfaces/user";
 import { AuthService } from "../../shared/services/auth.service";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Params, Router } from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -13,12 +13,19 @@ export class LoginComponent implements OnInit{
 
   form!: FormGroup
   submitted: boolean = false
+  massage: string = ''
 
-  constructor( private authService: AuthService,
-               private route: Router
+  constructor( public authService: AuthService,
+               private router: Router,
+               private route: ActivatedRoute
                ) {}
 
   ngOnInit() {
+    this.route.queryParams.subscribe((params: Params) => {
+      if(params['shouldLogin']){
+        this.massage = 'Pls, enter credentials again'
+      }
+    })
     this.form = new FormGroup({
       email: new FormControl(null, [
         Validators.email,
@@ -43,7 +50,9 @@ export class LoginComponent implements OnInit{
     }
     this.authService.login(user).subscribe(() => {
       this.form.reset()
-      this.route.navigate(['/admin', 'dashboard'])
+      this.router.navigate(['/admin', 'dashboard'])
+      this.submitted = false
+    }, () => {
       this.submitted = false
     })
 

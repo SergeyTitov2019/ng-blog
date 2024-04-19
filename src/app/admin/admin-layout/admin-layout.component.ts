@@ -9,9 +9,8 @@ import {AuthService} from "../../shared/services/auth.service";
 })
 export class AdminLayoutComponent {
   constructor(private router: Router,
-              private authService: AuthService
-              ) {
-  }
+              public authService: AuthService
+              ) {}
 
   logout(event: Event) {
     event.preventDefault()
