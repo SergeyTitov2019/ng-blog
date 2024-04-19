@@ -5,7 +5,7 @@ import {catchError, Observable, Observer, Subject, tap, throwError} from "rxjs";
 import {environment} from "../../../environments/environment.development";
 import {FbUserResponse} from "../interfaces/fb-user-response";
 
-@Injectable({providedIn: "root"})
+@Injectable()
 export class AuthService {
 
   url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key='
@@ -58,14 +58,12 @@ export class AuthService {
     return !!this.token
   }
 
-  setToken(response: FbUserResponse | any): void {
+  private setToken(response: FbUserResponse | any): void {
     if(response){
       const expDate = new Date(new Date().getTime() + +response.expiresIn*1000)
       localStorage.setItem('fb-token', response.idToken)
       localStorage.setItem('fb-token-expired', expDate.toString())
-      console.log(response);
-      console.log('expDate:', expDate);
-      console.log('expDate++:', +response.expiresIn*1000);
+      console.log('RES:', response);
     } else {
       localStorage.clear()
     }

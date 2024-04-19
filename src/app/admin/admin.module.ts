@@ -7,6 +7,8 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {CreateComponent} from './create/create.component';
 import {EditPageComponent} from './edit-page/edit-page.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {AuthService} from "../shared/services/auth.service";
+import {SharedModule} from "../shared/shared/shared.module";
 
 
 const routes: Routes = [
@@ -33,9 +35,11 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule,
     RouterModule.forChild(routes)
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthService]
 })
 export class AdminModule {
 }

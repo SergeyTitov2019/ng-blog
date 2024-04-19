@@ -1,7 +1,9 @@
 <div class="container">
   <form class="card" [formGroup]="form" (ngSubmit)="onSubmit()">
     <h3>Enter admin panel</h3>
-    <div class="input-wrapper">
+    <div class="input-wrapper"
+         [ngClass]="{invalid: form.get('email')?.touched && form.get('email')?.invalid}"
+    >
       <label for="email">Email</label>
       <input id='email'
              type="email"
@@ -11,8 +13,11 @@
       <div *ngIf="form.get('email')?.touched && form.get('email')?.invalid" class="validation">
         <small>Type correct email</small>
       </div>
+      <div *ngIf="form.get('email')?.touched && form.get('email')?.pristine" class="validation">
+        <small>This field is required </small>
+      </div>
     </div>
-    <div class="input-wrapper">
+    <div class="input-wrapper" [ngClass]="{invalid: form.get('password')?.touched && form.get('password')?.invalid}">
       <label for="password">Password</label>
       <input id='password'
              type="password"
@@ -20,13 +25,22 @@
              placeholder="Enter your password"
              formControlName="password">
 
-      <div *ngIf="form.get('password')?.touched && form.get('password')?.invalid" class="validation">
-        <small>Required password length must be no more than <strong> {{ form.get('password')?.errors!['minlength'].requiredLength }}</strong></small>
+      <div *ngIf="form.get('password')?.touched && form.get('password')?.pristine" class="validation">
+        <small> Password is required </small>
       </div>
+      <div *ngIf="form.get('password')?.touched && form.get('password')?.invalid && form.get('password')?.errors!['minlength'] " class="validation">
+        <small>Required password length must not be less than
+          <strong> {{ form.get('password')?.errors!['minlength']['requiredLength'] }}</strong>.  &nbsp;
+        </small>
+        <small>Current length is
+          <strong> {{ form.get('password')?.errors!['minlength']['actualLength'] }}</strong>
+        </small>
+      </div>
+
     </div>
     <button type="submit"
             class="btn btn-outline-success"
-            [disabled]="form.invalid"
+            [disabled]="form.invalid || submitted"
     >Enter</button>
   </form>
 </div>
