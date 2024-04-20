@@ -5,7 +5,7 @@
     <th scope="col">Author</th>
     <th scope="col">Title</th>
     <th scope="col">Date</th>
-    <th scope="col">Action</th>
+    <th ><input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchStr"></th>
   </tr>
   </thead>
   <tbody>
@@ -15,8 +15,8 @@
     <td>{{ post.title }}</td>
     <td>{{ post.date }}</td>
     <td>
-      <button class="btn btn-outline-success" [routerLink]="['/admin', 'post', post.id, 'edit']">Open</button>
-      <button class="btn btn-outline-danger" (click)="onDelete(post.id)">Delete</button>
+      <button class="btn btn-light" [routerLink]="['/admin', 'post', post.id, 'edit']">Open</button>
+      <button class="btn btn-light" (click)="onDelete(post.id)">Delete</button>
     </td>
   </tr>
   </tbody>
