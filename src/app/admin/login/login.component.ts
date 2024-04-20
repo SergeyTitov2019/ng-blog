@@ -24,6 +24,8 @@ export class LoginComponent implements OnInit{
     this.route.queryParams.subscribe((params: Params) => {
       if(params['shouldLogin']){
         this.massage = 'Pls, enter credentials again'
+      } else if(params['authFailed']){
+        this.massage = 'Session is over. Pls, enter credentials again'
       }
     })
     this.form = new FormGroup({

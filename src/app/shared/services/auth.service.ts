@@ -5,7 +5,7 @@ import {catchError, Observable, Observer, Subject, tap, throwError} from "rxjs";
 import {environment} from "../../../environments/environment.development";
 import {FbUserResponse} from "../interfaces/fb-user-response";
 
-@Injectable()
+@Injectable({providedIn: "root"})
 export class AuthService {
 
   url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key='
