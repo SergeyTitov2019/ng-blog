@@ -1,1 +1,22 @@
-<p>edit-page works!</p>
+<div *ngIf="form; else loader">
+  <form class="container" [formGroup]="form" (ngSubmit)="submit()">
+    <h3 class="card-header">Post Editing</h3>
+
+    <div class="card">
+      <div>
+        <label for="title">Title:</label>
+        <input id="title" type="text" class="form-control" placeholder="Post title" formControlName="title">
+      </div>
+
+      <quill-editor formControlName="text"></quill-editor>
+
+    </div>
+    <button class="btn btn-outline-success" type="submit" [disabled]="form.invalid || submitted">Edit Post</button>
+  </form>
+
+</div>
+<ng-template #loader>
+  <p>Loader ...</p>
+</ng-template>
+
+
