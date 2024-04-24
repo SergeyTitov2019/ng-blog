@@ -1,14 +1,16 @@
-<div class="post">
+<div class="post" *ngIf="post$ | async as post; else loader">
   <div class="card-header">
-    <h1>Post title</h1>
+    <h1>{{post.title}}</h1>
     <button routerLink="/" class="btn btn-outline-secondary">To Main Page</button>
   </div>
 
   <div class="info">
-    <strong>Author</strong>
-    <small>12.05.2000</small>
+    <strong>{{post.author}}</strong>
+    <small>{{post.date | date:'medium'}}</small>
   </div>
-  <div>
-    <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquid deserunt, dolores eligendi facilis iste itaque magni maiores numquam pariatur, porro quae rerum? Beatae dolor dolore eaque esse libero voluptas?</span><span>Aliquam consequuntur distinctio ea ipsum iure laudantium libero modi, molestias nesciunt officiis provident, ratione reprehenderit repudiandae rerum sint tempora veniam? Asperiores dolor fugit inventore nisi quis. Adipisci rem tempore voluptates.</span><span>Accusamus amet atque consequuntur corporis deleniti, eveniet expedita id maiores modi natus non pariatur provident quia quibusdam quo quod temporibus velit! Aut corporis iusto libero molestias provident quae quo tempore!</span><span>Alias architecto doloremque ducimus eius eum iusto magnam magni nesciunt odio odit officia perferendis placeat quaerat, quisquam sed temporibus veniam? Adipisci consequuntur dolore eos iure nesciunt nulla quibusdam repudiandae, saepe.</span><span>Adipisci aliquid animi cupiditate delectus dignissimos dolorum laudantium officia praesentium, provident quae quia reprehenderit veniam! Aspernatur beatae corporis cum exercitationem, fuga laborum, libero molestias possimus quam tempore temporibus ullam, veniam.</span><span>Ad beatae cumque, dignissimos dolore dolorem doloribus ea eius error est et fugit iste iusto laboriosam, maiores modi molestiae neque numquam officia quasi quo sed soluta tenetur totam voluptas voluptate!</span><span>Ad debitis ducimus eaque earum eum facilis fuga magni maiores, nemo nulla optio quasi ratione repellendus saepe tempore vitae voluptates? Aperiam dicta earum excepturi facilis mollitia obcaecati recusandae reiciendis sequi?</span><span>Accusantium aliquam architecto debitis deleniti nobis non repellendus sit. Aperiam blanditiis cupiditate debitis, eum facilis minima minus molestiae mollitia natus nemo omnis rem soluta. Ad debitis nihil reiciendis suscipit vel!</span><span>Aspernatur delectus perspiciatis vel veritatis. Accusantium atque consequuntur debitis error impedit inventore libero, magni nesciunt quaerat quia quod ratione repellendus reprehenderit similique soluta totam voluptas. Autem exercitationem harum hic. Libero.</span><span>Deleniti dignissimos expedita fugit in quibusdam sequi tempora. A alias aliquid cum dicta doloremque eos fuga itaque laboriosam natus nemo placeat, quaerat quisquam sapiente sed soluta sunt unde voluptatibus voluptatum?</span></p>
-  </div>
+  <quill-view-html [content]="post.text"></quill-view-html>
 </div>
+
+<ng-template #loader>
+  <p>Loading ...</p>
+</ng-template>

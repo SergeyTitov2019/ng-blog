@@ -2,3 +2,8 @@ button{
   width: 100px;
   margin-left: 1rem;
 }
+
+td{
+  line-height: 35px
+}
+

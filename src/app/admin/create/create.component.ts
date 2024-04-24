@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl, Validators} from "@angular/forms";
 import {Post} from "../../shared/interfaces/post";
 import {PostService} from "../../shared/services/post.service";
+import {AlertService} from "../../shared/services/alert.service";
 
 @Component({
   selector: 'app-create',
@@ -12,8 +13,9 @@ export class CreateComponent implements OnInit{
 
   form!: FormGroup
 
-  constructor(private postService: PostService) {
-  }
+  constructor(private postService: PostService,
+              private alertService: AlertService
+              ) {}
 
   ngOnInit() {
     this.form = new FormGroup<any>({
@@ -35,6 +37,7 @@ export class CreateComponent implements OnInit{
     }
     console.log(post);
     this.postService.create(post).subscribe(() => {
+      this.alertService.success('Post was successfully created')
       this.form.reset()
     })
   }

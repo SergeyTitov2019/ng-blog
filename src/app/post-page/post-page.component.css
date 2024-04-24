@@ -10,7 +10,7 @@ button{
 
 .info{
   margin: 1rem 0;
-  width: 150px;
+  min-width: 150px;
   display: flex;
   justify-content: space-between;
   align-items: center;

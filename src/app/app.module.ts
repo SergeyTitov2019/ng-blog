@@ -10,6 +10,7 @@ import { PostPageComponent } from './post-page/post-page.component';
 import { SharedModule } from "./shared/shared/shared.module";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import {AuthInterceptor} from "./shared/services/auth-interceptor.service";
+import { AlertComponent } from './alert/alert.component';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -22,7 +23,7 @@ const INTERCEPTOR_PROVIDER: Provider = {
     MainLayoutComponent,
     HomeComponent,
     PostComponent,
-    PostPageComponent
+    PostPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +32,8 @@ const INTERCEPTOR_PROVIDER: Provider = {
     SharedModule
   ],
   providers: [INTERCEPTOR_PROVIDER],
+  exports: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
