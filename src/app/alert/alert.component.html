@@ -1,0 +1,12 @@
+<div *ngIf="text">
+  <div class="alert"
+       role="alert"
+       [ngClass]="{
+            'alert-primary': type === 'primary',
+            'alert-danger': type === 'danger',
+            'alert-warning': type === 'warning'
+       }"
+  >
+    {{ text }}
+  </div>
+</div>
