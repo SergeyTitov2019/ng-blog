@@ -10,7 +10,7 @@
         <a routerLinkActive="active" class="nav-link" [routerLink]="['/admin', 'create']">Create</a>
         </div>
         <a  class="nav-link" [routerLink]="['/']" (click)="logout($event)">
-          {{ authService.isAuthenticated() ? 'Log Out' :''}}
+          {{ authService.isAuthenticated() ? 'Log Out' :'Log In'}}
         </a>
       </div>
     </div>
