@@ -1,15 +1,21 @@
 <div class="card">
+
   <div class="card-header">
+    <div>
     <h2>{{post.title}}</h2>
-    <small>{{post.date | date}}</small>
+      <div class="info">
+        <small>{{post.date | date}}</small>
+        <small>Author: <b>{{post.author}}</b></small>
+      </div>
+    </div>
+    <button class="btn btn-outline-secondary"
+            [routerLink]="['/post', post.id]"> Open </button>
   </div>
-  <div class="info">
-    <small>{{post.author}}</small>
   </div>
+
+
   <div class="btn-wrapper">
 
-  <button class="btn btn-outline-secondary"
-          [routerLink]="['/post', post.id]"> Open </button>
-  </div>
+
 
 </div>
