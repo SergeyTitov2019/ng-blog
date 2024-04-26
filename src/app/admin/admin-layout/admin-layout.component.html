@@ -2,11 +2,16 @@
   <div class="container-fluid custom">
     <a class="navbar-brand" href="/">Admin Page</a>
     <div class="collapse navbar-collapse">
-      <div class="navbar-nav" *ngIf="authService.isAuthenticated()">
-<!--        <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link" [routerLink]="['/']">Home</a>-->
+<!--      <div class="navbar-nav" *ngIf="authService.isAuthenticated()">-->
+      <div class="navbar-nav">
+        <div class="navbar-nav" *ngIf="authService.isAuthenticated()">
+        <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link" [routerLink]="['/']">Home</a>
         <a routerLinkActive="active" class="nav-link" [routerLink]="['/admin', 'dashboard']">Main</a>
         <a routerLinkActive="active" class="nav-link" [routerLink]="['/admin', 'create']">Create</a>
-        <a  class="nav-link" [routerLink]="['/']" (click)="logout($event)">Log Out</a>
+        </div>
+        <a  class="nav-link" [routerLink]="['/']" (click)="logout($event)">
+          {{ authService.isAuthenticated() ? 'Log Out' :''}}
+        </a>
       </div>
     </div>
   </div>
