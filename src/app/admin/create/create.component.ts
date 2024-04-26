@@ -35,7 +35,6 @@ export class CreateComponent implements OnInit{
       text: this.form.value.text,
       date: new Date(),
     }
-    console.log(post);
     this.postService.create(post).subscribe(() => {
       this.alertService.success('Post was successfully created')
       this.form.reset()

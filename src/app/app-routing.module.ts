@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import { MainLayoutComponent } from "./main-layout/main-layout.component";
 import { HomeComponent } from "./home/home.component";
-import { PostComponent } from "./post/post.component";
-import {PostPageComponent} from "./post-page/post-page.component";
+import { PostPageComponent } from "./post-page/post-page.component";
 
 const routes: Routes = [
   {
